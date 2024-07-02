@@ -18,9 +18,11 @@ const Item = ({image, name, description, price, image2}) => (
         <Image style={fashionStyles.image} source={image}/>
         <Image style={fashionStyles.image2} source={image2}/>
       </View>
-      <Text style={fashionStyles.name}>{name}</Text>
-      <Text style={fashionStyles.description}>{description}</Text>
-      <Text style={fashionStyles.price}>{price}</Text>
+      <View style={fashionStyles.details}>
+        <Text style={fashionStyles.name}>{name}</Text>
+        <Text style={fashionStyles.description}>{description}</Text>
+        <Text style={fashionStyles.price}>{price}</Text>
+      </View>
     </View>
 )
 
@@ -34,31 +36,32 @@ export default function Fashion() {
 
   return (
     <FlatList
-    data={fashionItems}
-    style={fashionStyles.fashion}
-    renderItem={renderItem}
-    keyExtractor={item => item.id.toString()}
-    key={numColumns}
-    numColumns={numColumns}
+      data={fashionItems}
+      style={fashionStyles.fashion}
+      renderItem={renderItem}
+      keyExtractor={item => item.id.toString()}
+      key={numColumns}
+      numColumns={numColumns}
     />
   )
 } 
 
 const fashionStyles = StyleSheet.create({
   fashion: {
-    padding: 20,
     flex: 1,
+    paddingHorizontal: 15,
+    marginVertical: 50,
   },
   fashionContainer: {
-    margin: 10,
-    width: '45%',
-    margin: '2.5%',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-around',
   },
   imageContainer: {
     flexDirection: 'column',
   },
   image: {
-    width:150,
+    width:180,
     height: 250,
     resizeMode: 'cover',
   },
@@ -66,14 +69,17 @@ const fashionStyles = StyleSheet.create({
     width: 50,
     height: 30,
     resizeMode: 'contain',
+    marginTop: -40,
+    marginLeft: 135,
   },
   name: {
     fontSize: 20,
     fontWeight: '100',
-    marginTop: 10,
+    marginTop: 20,
+    fontFamily: 'serif',
   },
   description: {
-    fontSize: 15,
+    fontSize: 17,
     marginTop: 5,
     fontWeight: '100',
     color: '#333333',
@@ -81,7 +87,12 @@ const fashionStyles = StyleSheet.create({
   price: {
     fontSize: 18,
     marginTop: 8,
-    color: '#FF5B61',
+    color: '#EE9972',
     fontWeight:'100',
   },
+  details: {
+    marginBottom: 10,
+    flexDirection: 'column',
+    justifyContent: 'center',
+  }
 })
