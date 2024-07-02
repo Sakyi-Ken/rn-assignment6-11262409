@@ -35,7 +35,7 @@ export default function Header() {
 
 const headerStyles = StyleSheet.create({
   headerContainer: {
-    flex: 1,
+    flex: 0.15,
     paddingHorizontal:25,
     paddingVertical: 30,
     marginTop: 30,
@@ -63,18 +63,18 @@ const headerStyles = StyleSheet.create({
     height: 35,
   },
   fashionLogo: {
-    resizeMode: 'contain',
-    width: 130,
-    height: 50,
+    resizeMode: 'cover',
+    width: 140,
+    height: 57,
   },
   searchIcon: {
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     width: 30,
     height: 30,
     marginRight: 20,
   },
   shopBag: {
-    resizeMode:'contain',
+    resizeMode:'cover',
     width: 30,
     height: 30,
   },
@@ -96,7 +96,7 @@ const headerStyles = StyleSheet.create({
     alignSelf: 'center',
   },
   listViewContainer: {
-    backgroundColor: '#EDEFEE',
+    backgroundColor: '#F0F0F0',
     borderRadius: 30,
     padding: 10,
   },
