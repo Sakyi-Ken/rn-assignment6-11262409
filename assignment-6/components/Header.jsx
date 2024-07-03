@@ -1,17 +1,32 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, Pressable} from 'react-native';
+import { CartContext } from './CartProvider';
 
-export default function Header() {
+export default function Header({navigation}) {
+  const { addToCart} = useContext(CartContext);
+
+  const handleAddItemToCart = () => {
+    const newItem = {
+      id: Date.now(),
+      image: require('../assets/dress2.png'),
+    };
+    addToCart(newItem);
+    navigation.navigate('CartBar');
+  };
   return (
     <View style={headerStyles.headerContainer}>
       <View style={headerStyles.header}>
         <Image style={headerStyles.menuIcon} source={require("../assets/Menu.png")}/>
         <Image style={headerStyles.fashionLogo} source={require("../assets/Logo.png")}/>
         <View style={headerStyles.searchContainer}>
-          <Image style={headerStyles.searchIcon} source={require("../assets/Search.png")}
-          />
-          <Image style={headerStyles.shopBag} source={require("../assets/shoppingBag.png")}
-          />
+          <Pressable onPress={() => navigation.navigate('Fashion')}>  
+            <Image style={headerStyles.searchIcon} source={require("../assets/Search.png")}
+            />
+          </Pressable>
+          <Pressable onPress={handleAddItemToCart}>
+            <Image style={headerStyles.shopBag} source={require("../assets/shoppingBag.png")}
+            />
+          </Pressable>
         </View>
       </View>
       <View style={headerStyles.navBar}>
