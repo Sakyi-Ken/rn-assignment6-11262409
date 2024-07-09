@@ -1,5 +1,20 @@
 import React from 'react';
 import {View, Text, StyleSheet, FlatList, Image} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const addItemToCart = async (itemId, imageSource) => {
+  try {
+    const existingCart = await AsyncStorage.getItem('cartItems');
+    let newCart = Json.parse(existingCart);
+    if (!newCart) {
+      newCart = [];
+    }
+    newCart.push({itemId, imageSource });
+    await AsyncStorage.setItem('cartItems', JSON.stringify(newCart));
+  } catch (error) {
+    console.log('Error adding item to cart', error);
+  }
+};
 
 const fashionItems = [
   {id:'1a',image: require('../assets/dress1.png'), image2: require('../assets/add_circle.png') ,name: 'Office Wear', description:'reversible angora cardigan',price: '$120'},
@@ -79,7 +94,7 @@ const fashionStyles = StyleSheet.create({
     fontFamily: 'serif',
   },
   description: {
-    fontSize: 17,
+    fontSize: 12.4,
     marginTop: 5,
     fontWeight: '100',
     color: '#333333',

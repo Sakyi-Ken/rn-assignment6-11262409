@@ -1,18 +1,11 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, Pressable} from 'react-native';
-import { CartContext } from './CartProvider';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Header({navigation}) {
-  const { addToCart} = useContext(CartContext);
+export default function Header() {
 
-  const handleAddItemToCart = () => {
-    const newItem = {
-      id: Date.now(),
-      image: require('../assets/dress2.png'),
-    };
-    addToCart(newItem);
-    navigation.navigate('CartBar');
-  };
+  const navigation = useNavigation();
+
   return (
     <View style={headerStyles.headerContainer}>
       <View style={headerStyles.header}>
@@ -23,7 +16,7 @@ export default function Header({navigation}) {
             <Image style={headerStyles.searchIcon} source={require("../assets/Search.png")}
             />
           </Pressable>
-          <Pressable onPress={handleAddItemToCart}>
+          <Pressable onPress={() => navigation.navigate('CartList')}>
             <Image style={headerStyles.shopBag} source={require("../assets/shoppingBag.png")}
             />
           </Pressable>
@@ -112,11 +105,11 @@ const headerStyles = StyleSheet.create({
   },
   listViewContainer: {
     backgroundColor: '#F0F0F0',
-    borderRadius: 30,
+    borderRadius:  28,
     padding: 10,
   },
   filterContainer: {
-    backgroundColor: '#EDEFEE',
+    backgroundColor: '#F0F0F0',
     padding: 10,
     borderRadius: 25,
     alignItems: 'center',

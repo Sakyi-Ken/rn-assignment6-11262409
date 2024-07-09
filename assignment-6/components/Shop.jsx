@@ -6,16 +6,10 @@ import Fashion from './Fashion'
 
 export default function Shop() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName='Header'>
-        <Stack.Screen name="Header" component={Header} />
-        <Stack.screen name="Fashion" component={Fashion} />
-      </Stack.Navigator>
-      <View style={shopStyles.container}>
-        <Header/>
-        <Fashion/>
-      </View>
-    </NavigationContainer>
+    <View style={shopStyles.container}>
+      <Header/>
+      <Fashion/>
+    </View>
   );  
 }
 
